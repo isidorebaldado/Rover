@@ -8,8 +8,8 @@ on_pin = GPIOPin(18)
 off_pin = GPIOPin(23)                                                           
 state_cycle = cycle(['on', 'off'])
 
-@app.route("/")                                                                 
-@app.route("/<state>")                                                          
+@app.route("/")
+@app.route("/<state>")
 def update_lamp(state=None):                                                    
     if state == 'on':                                                           
         on_pin.set(1)                                                           
