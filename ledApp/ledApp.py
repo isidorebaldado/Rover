@@ -52,4 +52,4 @@ def update_lamp(state=None):
     return render_template('main.html', **template_data)
 
 if __name__ == "__main__":                                                      
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=500)
