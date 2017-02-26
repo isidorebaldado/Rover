@@ -20,7 +20,7 @@ def stop():
     return "Moving backward"
 
 @app.route("/stream")
-def hello():
+def stream():
     return "Streaming video"
 
 
