@@ -39,15 +39,19 @@ def ledOn():
         p.ChangeDutyCycle(dc)
         time.sleep(0.1)
         duty = dc
+        print("duty cycle: {}".format(duty))
+    print("FINAL DUTY CYCLE: {}".format(duty))
     return None
 
 def ledOff():
     global duty
-    start = int(GPIO.input(23))
+
     for dc in range(duty, 0, -5):
         p.ChangeDutyCycle(dc)
         time.sleep(0.1)
-        print(duty)
+        duty = dc
+        print("duty cycle: {}".format(duty))
+    print("FINAL DUTY CYCLE: {}".format(duty))
     return None
 
 
