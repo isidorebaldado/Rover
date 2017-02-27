@@ -6,6 +6,8 @@ import RPi.GPIO as GPIO
 
 app = Flask(__name__)
 
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
 @app.route("/")
 def hello():
@@ -13,15 +15,33 @@ def hello():
 
 @app.route("/forward")
 def forward():
+    ledOn()
     return "Moving forward"
 
 @app.route("/stop")
 def stop():
+    ledOff()
     return "Moving backward"
 
 @app.route("/stream")
 def stream():
     return "Streaming video"
+
+def ledOn():
+    p = GPIO.PWM(23, 50)  # channel=12 frequency=50Hz
+    p.start(0)
+        for dc in range(0, 101, 5):
+            p.ChangeDutyCycle(dc)
+            time.sleep(0.1)
+    return None
+
+def ledOff():
+    p = GPIO.PWM(23, 50)  # channel=12 frequency=50Hz
+    p.start(0)
+        for dc in range(100, 0, -5):
+            p.ChangeDutyCycle(dc)
+            time.sleep(0.1)
+    return None
 
 
 if __name__ == "__main__":
