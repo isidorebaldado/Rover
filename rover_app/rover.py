@@ -12,7 +12,7 @@ GPIO.setwarnings(False)
 GPIO.setup(23, GPIO.OUT)
 p = GPIO.PWM(23, 50)  # channel=12 frequency=50Hz
 p.start(0)
-duty = 0
+global duty = 0
 
 @app.route("/")
 def hello():
@@ -34,18 +34,18 @@ def stream():
 
 def ledOn():
     #start = int(GPIO.input(23))
-    for dc in range(self.duty, 101, 5):
+    for dc in range(duty, 101, 5):
         p.ChangeDutyCycle(dc)
         time.sleep(0.1)
-        print(self.duty)
+        print(duty)
     return None
 
 def ledOff():
     start = int(GPIO.input(23))
-    for dc in range(self.duty, 0, -5):
+    for dc in range(duty, 0, -5):
         p.ChangeDutyCycle(dc)
         time.sleep(0.1)
-        print(self.duty)
+        print(duty)
     return None
 
 
