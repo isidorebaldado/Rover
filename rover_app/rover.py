@@ -38,7 +38,7 @@ def ledOn():
     print("STARTING DUTY CYCLE: {}".format(duty))
     for dc in range(duty, 101, 5):
         p.ChangeDutyCycle(dc)
-        time.sleep(0.1)
+        time.sleep(0.2)
         duty = dc
         print("duty cycle: {}".format(duty))
     print("FINAL DUTY CYCLE: {}".format(duty))
@@ -49,7 +49,7 @@ def ledOff():
     print("STARTING DUTY CYCLE: {}".format(duty))
     for dc in range(duty, -1, -5):
         p.ChangeDutyCycle(dc)
-        time.sleep(0.1)
+        time.sleep(0.2)
         duty = dc
         print("duty cycle: {}".format(duty))
     print("FINAL DUTY CYCLE: {}".format(duty))
