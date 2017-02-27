@@ -35,6 +35,7 @@ def stream():
 def ledOn():
     #start = int(GPIO.input(23))
     global duty
+    print("STARTING DUTY CYCLE: {}".format(duty))
     for dc in range(duty, 101, 5):
         p.ChangeDutyCycle(dc)
         time.sleep(0.1)
@@ -45,8 +46,8 @@ def ledOn():
 
 def ledOff():
     global duty
-
-    for dc in range(duty, 0, -5):
+    print("STARTING DUTY CYCLE: {}".format(duty))
+    for dc in range(duty, -1, -5):
         p.ChangeDutyCycle(dc)
         time.sleep(0.1)
         duty = dc
