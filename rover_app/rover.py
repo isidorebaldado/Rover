@@ -13,6 +13,9 @@ GPIO.setup(23, GPIO.OUT)
 p = GPIO.PWM(23, 50)  # channel=12 frequency=50Hz
 p.start(0)
 
+for property, value in vars(p).iteritems():
+    print property, ": ", value
+
 @app.route("/")
 def hello():
     return "Hello World"
