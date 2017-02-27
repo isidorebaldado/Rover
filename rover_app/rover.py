@@ -38,7 +38,7 @@ def ledOn():
     for dc in range(duty, 101, 5):
         p.ChangeDutyCycle(dc)
         time.sleep(0.1)
-        print(duty)
+        duty = dc
     return None
 
 def ledOff():
