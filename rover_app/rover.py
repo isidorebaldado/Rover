@@ -32,10 +32,11 @@ def stream():
     return "Streaming video"
 
 def ledOn():
-    start = int(GPIO.input(23))
+    #start = int(GPIO.input(23))
     for dc in range(start, 101, 5):
         p.ChangeDutyCycle(dc)
         time.sleep(0.1)
+        print(p.dutycycle)
     return None
 
 def ledOff():
