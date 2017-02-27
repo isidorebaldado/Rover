@@ -9,6 +9,10 @@ app = Flask(__name__)
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
+GPIO.setup(23, GPIO.OUT)
+p = GPIO.PWM(23, 50)  # channel=12 frequency=50Hz
+p.start(0)
+
 @app.route("/")
 def hello():
     return "Hello World"
@@ -28,19 +32,15 @@ def stream():
     return "Streaming video"
 
 def ledOn():
-    p = GPIO.PWM(23, 50)  # channel=12 frequency=50Hz
-    p.start(0)
-        for dc in range(0, 101, 5):
-            p.ChangeDutyCycle(dc)
-            time.sleep(0.1)
+    for dc in range(0, 101, 5):
+        p.ChangeDutyCycle(dc)
+        time.sleep(0.1)
     return None
 
 def ledOff():
-    p = GPIO.PWM(23, 50)  # channel=12 frequency=50Hz
-    p.start(0)
-        for dc in range(100, 0, -5):
-            p.ChangeDutyCycle(dc)
-            time.sleep(0.1)
+    for dc in range(100, 0, -5):
+        p.ChangeDutyCycle(dc)
+        time.sleep(0.1)
     return None
 
 
